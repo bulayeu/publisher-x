@@ -45,6 +45,11 @@ canvas {
     border: 5px solid #aee;
 }
 
+.video-area > img {
+    margin: 20px;
+    border: 5px solid yellow;
+}
+
 #buttons {
     padding-left: 20px;
 }
@@ -53,7 +58,20 @@ canvas {
     margin-right: 10px;
 }
 
-img {
+.svg {
     opacity: 0;
     margin-left: 20px;
+}
+
+#gif-controls {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#gif-controls > * {
+    margin-right: 20px;
+}
+#gif-controls .btn {
+    margin-right: 10px;
 }
