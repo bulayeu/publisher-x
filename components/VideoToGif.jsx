@@ -6,12 +6,20 @@ const VIDEO_URL = '/video.mp4';
 export default () => {
     const videoRef = useRef(0);
     const canvasRef = useRef(0);
+    const logoRef = useRef(0);
     const [image, setImage] = useState();
 
 
     const videoToImage = () => {
         const context = canvasRef.current.getContext("2d");
         context.drawImage(videoRef.current, 0, 0, 400, 400);
+        const image = canvasRef.current.toDataURL();
+        setImage(image);
+    }
+
+    const addAnythingOverVideo = () => {
+        const context = canvasRef.current.getContext("2d");
+        context.drawImage(logoRef.current, 20, 348, 116, 32);
         const image = canvasRef.current.toDataURL();
         setImage(image);
     }
@@ -83,6 +91,9 @@ export default () => {
     };
 
     return <div className='video-to-gif'>
+        <div>
+            <img ref={logoRef} src='/promo.svg' />
+        </div>
         <div className='video-area'>
             <video ref={videoRef} controls width={400}>
                 <source type="video/mp4" src={VIDEO_URL}/>
@@ -91,8 +102,8 @@ export default () => {
         </div>
         <div id='buttons' className='controls-area'>
             <button className='btn' onClick={videoToImage}>To image</button>
+            <button className='btn' onClick={addAnythingOverVideo}>Add logo over image</button>
             <a className='btn' href={image} download="preview.png">Download Image</a>
         </div>
-
     </div>
 }
